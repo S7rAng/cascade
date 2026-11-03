@@ -45,6 +45,8 @@ while IFS= read -r match; do
   [[ -z "$match" ]] && continue
   case "$match" in
     NOTICE:*|./NOTICE:*|THIRD_PARTY_NOTICES.md:*|./THIRD_PARTY_NOTICES.md:*) ;;
+    # Credits sections of the fork's READMEs link the original project.
+    README.md:*|./README.md:*|README.ru.md:*|./README.ru.md:*|README.zh.md:*|./README.zh.md:*) ;;
     *) echo "Unexpected upstream repository reference: $match" >&2; fail=1 ;;
   esac
 done < <(rg -n 'github\.com/JohnnyVBut/cascade|JohnnyVBut/cascade' . \
@@ -60,6 +62,8 @@ while IFS= read -r match; do
   [[ -z "$match" ]] && continue
   case "$match" in
     .env.example:*|./.env.example:*|.github/*|./.github/*|Dockerfile:*|./Dockerfile:*|README.md:*|./README.md:*|docker-compose*.yml:*|./docker-compose*.yml:*|deploy/*|./deploy/*|docs/*|./docs/*|internal/frontend/embed_test.go:*|./internal/frontend/embed_test.go:*|internal/version/updater.go:*|./internal/version/updater.go:*|scripts/build-deploy-bundle.sh:*|./scripts/build-deploy-bundle.sh:*) ;;
+    # Verbatim copy of the upstream README, kept for reference.
+    README.upstream.md:*|./README.upstream.md:*) ;;
     *) echo "Unexpected hard-coded official release coordinate: $match" >&2; fail=1 ;;
   esac
 done < <(rg -n 'api\.github\.com/repos/alexnikon/cascade|ghcr\.io/alexnikon/cascade|github\.com/alexnikon/cascade/releases' . \

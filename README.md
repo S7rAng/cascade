@@ -144,6 +144,6 @@ tooling described above.
 
 ## License
 
-MIT, as inherited. The original copyright notice is preserved in
+[MIT License](LICENSE), as inherited. The original copyright notice is preserved in
 [`LICENSE`](LICENSE); see also [`NOTICE`](NOTICE) and
 [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
